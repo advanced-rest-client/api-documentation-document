@@ -18,29 +18,59 @@
 
   <script>
   suite('api-documentation-document', () => {
-    suite('Basic', () => {
-      test('H1 is not rendered', (done) => {
-        const element = fixture('Basic');
-        flush(() => {
-          const node = element.shadowRoot.querySelector('h1');
-          assert.notOk(node);
-          done();
-        });
-      });
-    });
     /* global AmfLoader */
-    suite('Has data', () => {
+    suite('Regular model', () => {
       let element;
       let docs;
+      let amf;
       suiteSetup(() => {
         return AmfLoader.load(1)
         .then((data) => {
+          amf = data[0];
           docs = data[1];
         });
       });
 
       setup((done) => {
         element = fixture('Basic');
+        element.amfModel = amf;
+        element.apiDocument = docs;
+        flush(() => done());
+      });
+
+      test('Computes title', () => {
+        assert.equal(element.title, 'About');
+      });
+
+      test('hasTitle is rendered', () => {
+        assert.isTrue(element.hasTitle);
+      });
+
+      test('Computes content', () => {
+        assert.typeOf(element.content, 'string');
+      });
+
+      test('title is rendered', () => {
+        const node = element.shadowRoot.querySelector('h1');
+        assert.ok(node);
+      });
+    });
+
+    suite('Compact model', () => {
+      let element;
+      let docs;
+      let amf;
+      suiteSetup(() => {
+        return AmfLoader.load(1, true)
+        .then((data) => {
+          amf = data[0];
+          docs = data[1];
+        });
+      });
+
+      setup((done) => {
+        element = fixture('Basic');
+        element.amfModel = amf;
         element.apiDocument = docs;
         flush(() => done());
       });

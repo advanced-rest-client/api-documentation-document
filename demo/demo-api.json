@@ -1,33 +1,33 @@
 [
   {
-    "@id": "file://demo/api.raml",
+    "@id": "amf://id",
     "@type": [
-      "http://raml.org/vocabularies/document#Document",
-      "http://raml.org/vocabularies/document#Fragment",
-      "http://raml.org/vocabularies/document#Module",
-      "http://raml.org/vocabularies/document#Unit"
+      "http://a.ml/vocabularies/document#Document",
+      "http://a.ml/vocabularies/document#Fragment",
+      "http://a.ml/vocabularies/document#Module",
+      "http://a.ml/vocabularies/document#Unit"
     ],
-    "http://raml.org/vocabularies/document#encodes": [
+    "http://a.ml/vocabularies/document#encodes": [
       {
-        "@id": "file://demo/api.raml#/web-api",
+        "@id": "amf://id#4",
         "@type": [
           "http://schema.org/WebAPI",
-          "http://raml.org/vocabularies/document#RootDomainElement",
-          "http://raml.org/vocabularies/document#DomainElement"
+          "http://a.ml/vocabularies/document#RootDomainElement",
+          "http://a.ml/vocabularies/document#DomainElement"
         ],
         "http://schema.org/name": [
           {
             "@value": "My super cool, example API"
           }
         ],
-        "http://raml.org/vocabularies/http#server": [
+        "http://a.ml/vocabularies/http#server": [
           {
-            "@id": "file://demo/api.raml#/web-api/http%3A%2F%2Fapi.domain.com%2F",
+            "@id": "amf://id#5",
             "@type": [
-              "http://raml.org/vocabularies/http#Server",
-              "http://raml.org/vocabularies/document#DomainElement"
+              "http://a.ml/vocabularies/http#Server",
+              "http://a.ml/vocabularies/document#DomainElement"
             ],
-            "http://raml.org/vocabularies/http#url": [
+            "http://a.ml/vocabularies/http#url": [
               {
                 "@value": "http://api.domain.com/"
               }
@@ -41,10 +41,10 @@
         ],
         "http://schema.org/documentation": [
           {
-            "@id": "file://demo/api.raml#/web-api/creative-work/Read%20this!",
+            "@id": "amf://id#6",
             "@type": [
               "http://schema.org/CreativeWork",
-              "http://raml.org/vocabularies/document#DomainElement"
+              "http://a.ml/vocabularies/document#DomainElement"
             ],
             "http://schema.org/title": [
               {
@@ -58,10 +58,10 @@
             ]
           },
           {
-            "@id": "file://demo/document.raml/creative-work/About",
+            "@id": "amf://id#2",
             "@type": [
               "http://schema.org/CreativeWork",
-              "http://raml.org/vocabularies/document#DomainElement"
+              "http://a.ml/vocabularies/document#DomainElement"
             ],
             "http://schema.org/title": [
               {
@@ -75,10 +75,10 @@
             ]
           },
           {
-            "@id": "file://demo/api.raml#/web-api/creative-work/Test%20docs",
+            "@id": "amf://id#7",
             "@type": [
               "http://schema.org/CreativeWork",
-              "http://raml.org/vocabularies/document#DomainElement"
+              "http://a.ml/vocabularies/document#DomainElement"
             ],
             "http://schema.org/title": [
               {
@@ -94,20 +94,20 @@
         ]
       }
     ],
-    "http://raml.org/vocabularies/document#references": [
+    "http://a.ml/vocabularies/document#references": [
       {
-        "@id": "file://demo/document.raml",
+        "@id": "amf://id#1",
         "@type": [
-          "http://raml.org/vocabularies/document#UserDocumentation",
-          "http://raml.org/vocabularies/document#Fragment",
-          "http://raml.org/vocabularies/document#Unit"
+          "http://a.ml/vocabularies/document#UserDocumentation",
+          "http://a.ml/vocabularies/document#Fragment",
+          "http://a.ml/vocabularies/document#Unit"
         ],
-        "http://raml.org/vocabularies/document#encodes": [
+        "http://a.ml/vocabularies/document#encodes": [
           {
-            "@id": "file://demo/document.raml/creative-work/About",
+            "@id": "amf://id#2",
             "@type": [
               "http://schema.org/CreativeWork",
-              "http://raml.org/vocabularies/document#DomainElement"
+              "http://a.ml/vocabularies/document#DomainElement"
             ],
             "http://schema.org/title": [
               {

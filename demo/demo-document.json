@@ -1,17 +1,17 @@
 [
   {
-    "@id": "file://demo/document.raml",
+    "@id": "amf://id",
     "@type": [
-      "http://raml.org/vocabularies/document#UserDocumentation",
-      "http://raml.org/vocabularies/document#Fragment",
-      "http://raml.org/vocabularies/document#Unit"
+      "http://a.ml/vocabularies/document#UserDocumentation",
+      "http://a.ml/vocabularies/document#Fragment",
+      "http://a.ml/vocabularies/document#Unit"
     ],
-    "http://raml.org/vocabularies/document#encodes": [
+    "http://a.ml/vocabularies/document#encodes": [
       {
-        "@id": "file://demo/document.raml/creative-work/About",
+        "@id": "amf://id#1",
         "@type": [
           "http://schema.org/CreativeWork",
-          "http://raml.org/vocabularies/document#DomainElement"
+          "http://a.ml/vocabularies/document#DomainElement"
         ],
         "http://schema.org/title": [
           {
