@@ -1,85 +1,488 @@
+[
 {
-  "@context": {
-    "raml-http": "http://a.ml/vocabularies/http#",
-    "shacl": "http://www.w3.org/ns/shacl#",
-    "raml-shapes": "http://a.ml/vocabularies/shapes#",
-    "security": "http://a.ml/vocabularies/security#",
-    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "data": "http://a.ml/vocabularies/data#",
-    "doc": "http://a.ml/vocabularies/document#",
-    "schema-org": "http://schema.org/",
-    "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "hydra": "http://www.w3.org/ns/hydra/core#"
-  },
-  "@id": "amf://id",
-  "@type": [
-    "doc:Document",
-    "doc:Fragment",
-    "doc:Module",
-    "doc:Unit"
-  ],
-  "doc:encodes": {
-    "@id": "amf://id#4",
-    "@type": [
-      "schema-org:WebAPI",
-      "doc:RootDomainElement",
-      "doc:DomainElement"
-    ],
-    "raml-http:server": {
-      "@id": "amf://id#5",
-      "@type": [
-        "raml-http:Server",
-        "doc:DomainElement"
-      ],
-      "raml-http:url": "http://api.domain.com/"
-    },
-    "schema-org:documentation": [
-      {
-        "@id": "amf://id#6",
-        "@type": [
-          "schema-org:CreativeWork",
-          "doc:DomainElement"
-        ],
-        "schema-org:description": "# This is an example API spec\nThe API doesn't exists in the real world therefore calls made to any endpoint will always fail.\nIf you'd like to perform actual request and see the response try GitHub API (which doesn't require user authentication in some endpoints) or other APIs.\nNote that you may need a Client ID or valid authorization token to perform a call to some APIs that are secured by the OAuth 2 protocol.\nThank you for testing the API console. Your feedback is welcome. Email us: arc@mulesoft.com\n",
-        "schema-org:title": "Read this!"
-      },
-      {
-        "@id": "amf://id#2",
-        "@type": [
-          "schema-org:CreativeWork",
-          "doc:DomainElement"
-        ],
-        "schema-org:description": "This is test document.\n\n## Example\nLet's say you want to generate a random number in the request. So the property\nvalue like:\n```\nhttp://www.domain.com/?time=${now}\n```\ncan produce:\n```\nhttp://www.domain.com/?time=12312312312\n```\n## Build-in magic variables.\n| Variable | Description | Example |\n| --- | --- | --- |\n| `${random}` | Will generate random number in range from 0 to Number.MAX_SAFE_INTEGER | 9007199254740991 |\n| `${random:NUMBER}` | A variation of `${random}` where the result will be remembered and can be used in other property. If the same `NUMBER` occurs again then previously generated value will be used. | 7199254740 |\n| `${now}` | Inserts current epoch time | 12312312312 |\n",
-        "schema-org:title": "About"
-      },
-      {
-        "@id": "amf://id#7",
-        "@type": [
-          "schema-org:CreativeWork",
-          "doc:DomainElement"
-        ],
-        "schema-org:description": "# A test documentation.\nThis text was created by ARC's RAML editor.\nYou probably see this because you are testing ARC's web components and this component\nis responsible for displaying a documentation from the RAML definition.\nPlay around with the element and use it in your project.\nPlease, note the licensing information available in every ARC component.\nIf you have any question email me: arc@mulesoft.com\nOr slack me (internally only): Pawel Psztyc (P3)\n",
-        "schema-org:title": "Test docs"
-      }
-    ],
-    "schema-org:name": "My super cool, example API",
-    "schema-org:version": "v1"
-  },
-  "doc:references": {
-    "@id": "amf://id#1",
-    "@type": [
-      "doc:UserDocumentation",
-      "doc:Fragment",
-      "doc:Unit"
-    ],
-    "doc:encodes": {
-      "@id": "amf://id#2",
-      "@type": [
-        "schema-org:CreativeWork",
-        "doc:DomainElement"
-      ],
-      "schema-org:description": "This is test document.\n\n## Example\nLet's say you want to generate a random number in the request. So the property\nvalue like:\n```\nhttp://www.domain.com/?time=${now}\n```\ncan produce:\n```\nhttp://www.domain.com/?time=12312312312\n```\n## Build-in magic variables.\n| Variable | Description | Example |\n| --- | --- | --- |\n| `${random}` | Will generate random number in range from 0 to Number.MAX_SAFE_INTEGER | 9007199254740991 |\n| `${random:NUMBER}` | A variation of `${random}` where the result will be remembered and can be used in other property. If the same `NUMBER` occurs again then previously generated value will be used. | 7199254740 |\n| `${now}` | Inserts current epoch time | 12312312312 |\n",
-      "schema-org:title": "About"
-    }
-  }
+"@id": "",
+"@type": [
+"doc:Document",
+"doc:Fragment",
+"doc:Module",
+"doc:Unit"
+],
+"doc:encodes": [
+{
+"@id": "#3",
+"@type": [
+"schema-org:WebAPI",
+"doc:RootDomainElement",
+"doc:DomainElement"
+],
+"schema-org:name": [
+{
+"@value": "My super cool, example API"
 }
+],
+"raml-http:server": [
+{
+"@id": "#4",
+"@type": [
+"raml-http:Server",
+"doc:DomainElement"
+],
+"raml-http:url": [
+{
+"@value": "http://api.domain.com/"
+}
+],
+"sourcemaps:sources": [
+{
+"@id": "#4/source-map",
+"@type": [
+"sourcemaps:SourceMap"
+],
+"sourcemaps:lexical": [
+{
+"sourcemaps:element": [
+{
+"@value": "raml-http:url"
+}
+],
+"sourcemaps:value": [
+{
+"@value": "[(4,0)-(6,0)]"
+}
+]
+}
+],
+"sourcemaps:synthesized-field": [
+{
+"sourcemaps:element": [
+{
+"@value": "amf://id#4"
+}
+],
+"sourcemaps:value": [
+{
+"@value": "true"
+}
+]
+}
+]
+}
+]
+}
+],
+"schema-org:version": [
+{
+"@value": "v1"
+}
+],
+"schema-org:documentation": [
+{
+"@id": "#5",
+"@type": [
+"schema-org:CreativeWork",
+"doc:DomainElement"
+],
+"schema-org:title": [
+{
+"@value": "Read this!"
+}
+],
+"schema-org:description": [
+{
+"@value": "# This is an example API spec\nThe API doesn't exists in the real world therefore calls made to any endpoint will always fail.\nIf you'd like to perform actual request and see the response try GitHub API (which doesn't require user authentication in some endpoints) or other APIs.\nNote that you may need a Client ID or valid authorization token to perform a call to some APIs that are secured by the OAuth 2 protocol.\nThank you for testing the API console. Your feedback is welcome. Email us: arc@mulesoft.com\n"
+}
+],
+"sourcemaps:sources": [
+{
+"@id": "#5/source-map",
+"@type": [
+"sourcemaps:SourceMap"
+],
+"sourcemaps:lexical": [
+{
+"sourcemaps:element": [
+{
+"@value": "schema-org:description"
+}
+],
+"sourcemaps:value": [
+{
+"@value": "[(8,4)-(14,0)]"
+}
+]
+},
+{
+"sourcemaps:element": [
+{
+"@value": "amf://id#5"
+}
+],
+"sourcemaps:value": [
+{
+"@value": "[(7,4)-(14,0)]"
+}
+]
+},
+{
+"sourcemaps:element": [
+{
+"@value": "schema-org:title"
+}
+],
+"sourcemaps:value": [
+{
+"@value": "[(7,4)-(8,0)]"
+}
+]
+}
+]
+}
+]
+},
+{
+"@id": "#2",
+"@type": [
+"schema-org:CreativeWork",
+"doc:DomainElement"
+],
+"schema-org:title": [
+{
+"@value": "About"
+}
+],
+"schema-org:description": [
+{
+"@value": "This is test document.\n\n## Example\nLet's say you want to generate a random number in the request. So the property\nvalue like:\n```\nhttp://www.domain.com/?time=${now}\n```\ncan produce:\n```\nhttp://www.domain.com/?time=12312312312\n```\n## Build-in magic variables.\n| Variable | Description | Example |\n| --- | --- | --- |\n| `${random}` | Will generate random number in range from 0 to Number.MAX_SAFE_INTEGER | 9007199254740991 |\n| `${random:NUMBER}` | A variation of `${random}` where the result will be remembered and can be used in other property. If the same `NUMBER` occurs again then previously generated value will be used. | 7199254740 |\n| `${now}` | Inserts current epoch time | 12312312312 |\n"
+}
+],
+"sourcemaps:sources": [
+{
+"@id": "#2/source-map",
+"@type": [
+"sourcemaps:SourceMap"
+],
+"sourcemaps:source-vendor": [
+{
+"sourcemaps:element": [
+{
+"@value": "amf://id#2"
+}
+],
+"sourcemaps:value": [
+{
+"@value": "RAML 1.0"
+}
+]
+}
+],
+"sourcemaps:lexical": [
+{
+"sourcemaps:element": [
+{
+"@value": "schema-org:description"
+}
+],
+"sourcemaps:value": [
+{
+"@value": "[(3,0)-(22,0)]"
+}
+]
+},
+{
+"sourcemaps:element": [
+{
+"@value": "amf://id#2"
+}
+],
+"sourcemaps:value": [
+{
+"@value": "[(2,0)-(22,0)]"
+}
+]
+},
+{
+"sourcemaps:element": [
+{
+"@value": "schema-org:title"
+}
+],
+"sourcemaps:value": [
+{
+"@value": "[(2,0)-(3,0)]"
+}
+]
+}
+]
+}
+]
+},
+{
+"@id": "#6",
+"@type": [
+"schema-org:CreativeWork",
+"doc:DomainElement"
+],
+"schema-org:title": [
+{
+"@value": "Test docs"
+}
+],
+"schema-org:description": [
+{
+"@value": "# A test documentation.\nThis text was created by ARC's RAML editor.\nYou probably see this because you are testing ARC's web components and this component\nis responsible for displaying a documentation from the RAML definition.\nPlay around with the element and use it in your project.\nPlease, note the licensing information available in every ARC component.\nIf you have any question email me: arc@mulesoft.com\nOr slack me (internally only): Pawel Psztyc (P3)\n"
+}
+],
+"sourcemaps:sources": [
+{
+"@id": "#6/source-map",
+"@type": [
+"sourcemaps:SourceMap"
+],
+"sourcemaps:lexical": [
+{
+"sourcemaps:element": [
+{
+"@value": "schema-org:description"
+}
+],
+"sourcemaps:value": [
+{
+"@value": "[(16,4)-(25,0)]"
+}
+]
+},
+{
+"sourcemaps:element": [
+{
+"@value": "amf://id#6"
+}
+],
+"sourcemaps:value": [
+{
+"@value": "[(15,4)-(25,0)]"
+}
+]
+},
+{
+"sourcemaps:element": [
+{
+"@value": "schema-org:title"
+}
+],
+"sourcemaps:value": [
+{
+"@value": "[(15,4)-(16,0)]"
+}
+]
+}
+]
+}
+]
+}
+],
+"sourcemaps:sources": [
+{
+"@id": "#3/source-map",
+"@type": [
+"sourcemaps:SourceMap"
+],
+"sourcemaps:source-vendor": [
+{
+"sourcemaps:element": [
+{
+"@value": "amf://id#3"
+}
+],
+"sourcemaps:value": [
+{
+"@value": "RAML 1.0"
+}
+]
+}
+],
+"sourcemaps:lexical": [
+{
+"sourcemaps:element": [
+{
+"@value": "schema-org:documentation"
+}
+],
+"sourcemaps:value": [
+{
+"@value": "[(6,0)-(25,0)]"
+}
+]
+},
+{
+"sourcemaps:element": [
+{
+"@value": "raml-http:server"
+}
+],
+"sourcemaps:value": [
+{
+"@value": "[(4,0)-(6,0)]"
+}
+]
+},
+{
+"sourcemaps:element": [
+{
+"@value": "amf://id#3"
+}
+],
+"sourcemaps:value": [
+{
+"@value": "[(2,0)-(25,0)]"
+}
+]
+},
+{
+"sourcemaps:element": [
+{
+"@value": "schema-org:name"
+}
+],
+"sourcemaps:value": [
+{
+"@value": "[(2,0)-(3,0)]"
+}
+]
+},
+{
+"sourcemaps:element": [
+{
+"@value": "schema-org:version"
+}
+],
+"sourcemaps:value": [
+{
+"@value": "[(3,0)-(4,0)]"
+}
+]
+}
+]
+}
+]
+}
+],
+"doc:references": [
+{
+"@id": "#1",
+"@type": [
+"doc:UserDocumentation",
+"doc:Fragment",
+"doc:Unit"
+],
+"doc:encodes": [
+{
+"@id": "#2",
+"@type": [
+"schema-org:CreativeWork",
+"doc:DomainElement"
+],
+"schema-org:title": [
+{
+"@value": "About"
+}
+],
+"schema-org:description": [
+{
+"@value": "This is test document.\n\n## Example\nLet's say you want to generate a random number in the request. So the property\nvalue like:\n```\nhttp://www.domain.com/?time=${now}\n```\ncan produce:\n```\nhttp://www.domain.com/?time=12312312312\n```\n## Build-in magic variables.\n| Variable | Description | Example |\n| --- | --- | --- |\n| `${random}` | Will generate random number in range from 0 to Number.MAX_SAFE_INTEGER | 9007199254740991 |\n| `${random:NUMBER}` | A variation of `${random}` where the result will be remembered and can be used in other property. If the same `NUMBER` occurs again then previously generated value will be used. | 7199254740 |\n| `${now}` | Inserts current epoch time | 12312312312 |\n"
+}
+],
+"sourcemaps:sources": [
+{
+"@id": "#2/source-map",
+"@type": [
+"sourcemaps:SourceMap"
+],
+"sourcemaps:source-vendor": [
+{
+"sourcemaps:element": [
+{
+"@value": "amf://id#2"
+}
+],
+"sourcemaps:value": [
+{
+"@value": "RAML 1.0"
+}
+]
+}
+],
+"sourcemaps:lexical": [
+{
+"sourcemaps:element": [
+{
+"@value": "schema-org:description"
+}
+],
+"sourcemaps:value": [
+{
+"@value": "[(3,0)-(22,0)]"
+}
+]
+},
+{
+"sourcemaps:element": [
+{
+"@value": "amf://id#2"
+}
+],
+"sourcemaps:value": [
+{
+"@value": "[(2,0)-(22,0)]"
+}
+]
+},
+{
+"sourcemaps:element": [
+{
+"@value": "schema-org:title"
+}
+],
+"sourcemaps:value": [
+{
+"@value": "[(2,0)-(3,0)]"
+}
+]
+}
+]
+}
+]
+}
+],
+"sourcemaps:sources": [
+{
+"@id": "#1/source-map",
+"@type": [
+"sourcemaps:SourceMap"
+],
+"sourcemaps:lexical": [
+{
+"sourcemaps:element": [
+{
+"@value": "amf://id#1"
+}
+],
+"sourcemaps:value": [
+{
+"@value": "[(2,0)-(22,0)]"
+}
+]
+}
+]
+}
+]
+}
+],
+"@context": {
+"@base": "amf://id",
+"raml-http": "http://a.ml/vocabularies/http#",
+"doc": "http://a.ml/vocabularies/document#",
+"sourcemaps": "http://a.ml/vocabularies/document-source-maps#",
+"schema-org": "http://schema.org/"
+}
+}
+]
