@@ -8,6 +8,9 @@
  *   api-documentation-document.html
  */
 
+
+// tslint:disable:variable-name Describing an API that's defined elsewhere.
+
 /// <reference path="../polymer/types/polymer-element.d.ts" />
 /// <reference path="../polymer/types/lib/elements/dom-if.d.ts" />
 /// <reference path="../marked-element/marked-element.d.ts" />
