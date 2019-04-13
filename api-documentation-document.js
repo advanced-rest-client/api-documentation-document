@@ -1,9 +1,9 @@
-import {PolymerElement} from '@polymer/polymer/polymer-element.js';
-import '@polymer/polymer/lib/elements/dom-if.js';
-import '@polymer/marked-element/marked-element.js';
-import '@advanced-rest-client/markdown-styles/markdown-styles.js';
-import {AmfHelperMixin} from '@api-components/amf-helper-mixin/amf-helper-mixin.js';
-import {html} from '@polymer/polymer/lib/utils/html-tag.js';
+import {PolymerElement} from '../../@polymer/polymer/polymer-element.js';
+import '../../@polymer/polymer/lib/elements/dom-if.js';
+import '../../@polymer/marked-element/marked-element.js';
+import '../../@advanced-rest-client/markdown-styles/markdown-styles.js';
+import {AmfHelperMixin} from '../../@api-components/amf-helper-mixin/amf-helper-mixin.js';
+import {html} from '../../@polymer/polymer/lib/utils/html-tag.js';
 /**
  * `api-documentation-document`
  *
