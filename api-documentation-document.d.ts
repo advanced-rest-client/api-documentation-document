@@ -5,17 +5,16 @@
  *   https://github.com/Polymer/tools/tree/master/packages/gen-typescript-declarations
  *
  * To modify these typings, edit the source file(s):
- *   api-documentation-document.html
+ *   api-documentation-document.js
  */
 
 
 // tslint:disable:variable-name Describing an API that's defined elsewhere.
+// tslint:disable:no-any describes the API as best we are able today
 
-/// <reference path="../polymer/types/polymer-element.d.ts" />
-/// <reference path="../polymer/types/lib/elements/dom-if.d.ts" />
-/// <reference path="../marked-element/marked-element.d.ts" />
-/// <reference path="../markdown-styles/markdown-styles.d.ts" />
-/// <reference path="../amf-helper-mixin/amf-helper-mixin.d.ts" />
+import {LitElement, html, css} from 'lit-element';
+
+import {AmfHelperMixin} from '@api-components/amf-helper-mixin/amf-helper-mixin.js';
 
 declare namespace ApiElements {
 
@@ -35,53 +34,40 @@ declare namespace ApiElements {
    * Markdown styles are defined in `advanced-rest-client/markdown-styles`.
    */
   class ApiDocumentationDocument extends
-    ApiElements.AmfHelperMixin(
+    AmfHelperMixin(
     Object) {
+    amf: any;
 
     /**
      * A Document to render.
-     * It is a value from `http://schema.org/documentation` of AMF
-     * API data model.
+     * Represents AMF's shape for document.
      */
-    apiDocument: object|null|undefined;
+    shape: object|null|undefined;
 
     /**
      * Computed value of the title of the documentation.
      * Might be undefined.
      */
-    readonly title: string|null|undefined;
-
-    /**
-     * Computed value, true if `title` is set.
-     */
-    readonly hasTitle: boolean|null|undefined;
+    _title: string|null|undefined;
 
     /**
      * Computed value of content of documentation.
      */
-    readonly content: string|null|undefined;
+    _content: string|null|undefined;
+    render(): any;
 
     /**
-     * Computes value for `title` property.
+     * Computes `title` and `content` properties when `shape` changes.
      *
-     * @param doc AMF's `http://schema.org/documentation` entry
+     * @param shape Value of the `shape` attrribute
      */
-    _computeTitle(doc: object|null): String|null|undefined;
-
-    /**
-     * Computes value for `hasTitle` property
-     */
-    _computeHasTitle(title: String|null): Boolean|null;
-
-    /**
-     * Computes value for `content` property.
-     *
-     * @param doc AMF's `http://schema.org/documentation` entry
-     */
-    _computeContent(doc: object|null): String|null|undefined;
+    _shapeChanged(shape: object|null): void;
   }
 }
 
-interface HTMLElementTagNameMap {
-  "api-documentation-document": ApiElements.ApiDocumentationDocument;
+declare global {
+
+  interface HTMLElementTagNameMap {
+    "api-documentation-document": ApiElements.ApiDocumentationDocument;
+  }
 }
