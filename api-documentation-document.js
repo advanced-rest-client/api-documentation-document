@@ -1,21 +1,11 @@
-import {PolymerElement} from '../../@polymer/polymer/polymer-element.js';
-import '../../@polymer/polymer/lib/elements/dom-if.js';
-import '../../@polymer/marked-element/marked-element.js';
-import '../../@advanced-rest-client/markdown-styles/markdown-styles.js';
-import {AmfHelperMixin} from '../../@api-components/amf-helper-mixin/amf-helper-mixin.js';
-import {html} from '../../@polymer/polymer/lib/utils/html-tag.js';
+import { LitElement, html, css } from 'lit-element';
+import { AmfHelperMixin } from '@api-components/amf-helper-mixin/amf-helper-mixin.js';
+import markdownStyles from '@advanced-rest-client/markdown-styles/markdown-styles.js';
+import '@advanced-rest-client/arc-marked/arc-marked.js';
 /**
  * `api-documentation-document`
  *
  * A component to render documentation node of the AMF model
- *
- * ## Styling
- *
- * `<api-documentation-document>` provides the following custom properties and mixins for styling:
- *
- * Custom property | Description | Default
- * ----------------|-------------|----------
- * `--arc-font-headline` | Mixin applied to header elmeent | `{}`
  *
  * Markdown styles are defined in `advanced-rest-client/markdown-styles`.
  *
@@ -25,91 +15,93 @@ import {html} from '../../@polymer/polymer/lib/utils/html-tag.js';
  * @memberof ApiElements
  * @appliesMixin AmfHelperMixin
  */
-class ApiDocumentationDocument extends AmfHelperMixin(PolymerElement) {
-  static get template() {
+class ApiDocumentationDocument extends AmfHelperMixin(LitElement) {
+  static get styles() {
+    return [
+      markdownStyles,
+      css`:host {
+        display: block;
+      }
+
+      h1 {
+        font-size: var(--arc-font-headline-font-size);
+        font-weight: var(--arc-font-headline-font-weight);
+        letter-spacing: var(--arc-font-headline-letter-spacing);
+        line-height: var(--arc-font-headline-line-height);
+      }
+
+      arc-marked {
+        background-color: transparent;
+        padding: 0;
+      }`
+    ];
+  }
+
+  render() {
+    const { _title: title, _content: content } = this;
+    const hasTitle = !!title;
     return html`
-    <style include="markdown-styles"></style>
-    <style>
-    :host {
-      display: block;
-    }
-
-    h1 {
-      @apply --arc-font-headline;
-    }
-    </style>
     <div id="preview">
-      <template is="dom-if" if="[[hasTitle]]">
-        <h1>[[title]]</h1>
-      </template>
-      <marked-element markdown="[[content]]">
-        <div slot="markdown-html" class="markdown-body"></div>
-      </marked-element>
-    </div>
-`;
+      ${hasTitle ? html`<h1>${title}</h1>` : undefined}
+      <arc-marked .markdown="${content}">
+        <div slot="markdown-html" part="markdown-html" class="markdown-html"></div>
+      </arc-marked>
+    </div>`;
   }
 
-  static get is() {
-    return 'api-documentation-document';
-  }
   static get properties() {
     return {
       /**
        * A Document to render.
-       * It is a value from `http://schema.org/documentation` of AMF
-       * API data model.
+       * Represents AMF's shape for document.
        */
-      apiDocument: Object,
+      shape: { type: Object },
       /**
        * Computed value of the title of the documentation.
        * Might be undefined.
        */
-      title: {
-        type: String,
-        computed: '_computeTitle(apiDocument, amfModel)'
-      },
-      /**
-       * Computed value, true if `title` is set.
-       */
-      hasTitle: {
-        type: Boolean,
-        computed: '_computeHasTitle(title)'
-      },
+      _title: { type: String },
       /**
        * Computed value of content of documentation.
        */
-      content: {
-        type: String,
-        computed: '_computeContent(apiDocument, amfModel)'
-      }
+      _content: { type: String }
     };
   }
-  /**
-   * Computes value for `title` property.
-   *
-   * @param {Object} doc AMF's `http://schema.org/documentation` entry
-   * @return {String|undefined}
-   */
-  _computeTitle(doc) {
-    return this._getValue(doc, this.ns.schema.title);
+
+  get shape() {
+    return this._shape;
+  }
+
+  set shape(value) {
+    const old = this._shape;
+    if (old === value) {
+      return;
+    }
+    this._shape = value;
+    this.requestUpdate('shape', old);
+    this._shapeChanged(value);
+  }
+
+  get amf() {
+    return this._amf;
+  }
+
+  set amf(value) {
+    const old = this._amf;
+    if (old === value) {
+      return;
+    }
+    this._amf = value;
+    this.requestUpdate('amf', old);
+    this._shapeChanged(this.shape);
   }
   /**
-   * Computes value for `hasTitle` property
-   *
-   * @param {?String} title
-   * @return {Boolean}
+   * Computes `title` and `content` properties when `shape` changes.
+   * @param {Object} shape Value of the `shape` attrribute
    */
-  _computeHasTitle(title) {
-    return !!title;
-  }
-  /**
-   * Computes value for `content` property.
-   *
-   * @param {Object} doc AMF's `http://schema.org/documentation` entry
-   * @return {String|undefined}
-   */
-  _computeContent(doc) {
-    return this._getValue(doc, this.ns.schema.desc);
+  _shapeChanged(shape) {
+    this._title = this._getValue(shape, this.ns.schema.title);
+    this._content = this._getValue(shape, this.ns.schema.desc);
   }
 }
-window.customElements.define(ApiDocumentationDocument.is, ApiDocumentationDocument);
+window.customElements.define('api-documentation-document', ApiDocumentationDocument);

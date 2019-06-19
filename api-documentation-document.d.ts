@@ -10,12 +10,11 @@
 
 
 // tslint:disable:variable-name Describing an API that's defined elsewhere.
+// tslint:disable:no-any describes the API as best we are able today
 
-import {PolymerElement} from '@polymer/polymer/polymer-element.js';
+import {LitElement, html, css} from 'lit-element';
 
 import {AmfHelperMixin} from '@api-components/amf-helper-mixin/amf-helper-mixin.js';
-
-import {html} from '@polymer/polymer/lib/utils/html-tag.js';
 
 declare namespace ApiElements {
 
@@ -37,48 +36,32 @@ declare namespace ApiElements {
   class ApiDocumentationDocument extends
     AmfHelperMixin(
     Object) {
+    amf: any;
 
     /**
      * A Document to render.
-     * It is a value from `http://schema.org/documentation` of AMF
-     * API data model.
+     * Represents AMF's shape for document.
      */
-    apiDocument: object|null|undefined;
+    shape: object|null|undefined;
 
     /**
      * Computed value of the title of the documentation.
      * Might be undefined.
      */
-    readonly title: string|null|undefined;
-
-    /**
-     * Computed value, true if `title` is set.
-     */
-    readonly hasTitle: boolean|null|undefined;
+    _title: string|null|undefined;
 
     /**
      * Computed value of content of documentation.
      */
-    readonly content: string|null|undefined;
+    _content: string|null|undefined;
+    render(): any;
 
     /**
-     * Computes value for `title` property.
+     * Computes `title` and `content` properties when `shape` changes.
      *
-     * @param doc AMF's `http://schema.org/documentation` entry
+     * @param shape Value of the `shape` attrribute
      */
-    _computeTitle(doc: object|null): String|null|undefined;
-
-    /**
-     * Computes value for `hasTitle` property
-     */
-    _computeHasTitle(title: String|null): Boolean|null;
-
-    /**
-     * Computes value for `content` property.
-     *
-     * @param doc AMF's `http://schema.org/documentation` entry
-     */
-    _computeContent(doc: object|null): String|null|undefined;
+    _shapeChanged(shape: object|null): void;
   }
 }
 
