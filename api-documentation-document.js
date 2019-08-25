@@ -82,17 +82,7 @@ class ApiDocumentationDocument extends AmfHelperMixin(LitElement) {
     this._shapeChanged(value);
   }
 
-  get amf() {
-    return this._amf;
-  }
-
-  set amf(value) {
-    const old = this._amf;
-    if (old === value) {
-      return;
-    }
-    this._amf = value;
-    this.requestUpdate('amf', old);
+  __amfChanged() {
     this._shapeChanged(this.shape);
   }
   /**
