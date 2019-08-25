@@ -1,6 +1,6 @@
 import { fixture, assert, nextFrame } from '@open-wc/testing';
 import { AmfLoader } from './amf-loader.js';
-import sinon from 'sinon/pkg/sinon-esm.js';
+import * as sinon from 'sinon/pkg/sinon-esm.js';
 import '../api-documentation-document.js';
 
 describe('<api-documentation-document>', function() {
