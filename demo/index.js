@@ -1,4 +1,4 @@
-import { html, render } from 'lit-html';
+import { html } from 'lit-html';
 import { LitElement } from 'lit-element';
 import { ApiDemoPageBase } from '@advanced-rest-client/arc-demo-helper/ApiDemoPage.js';
 import { AmfHelperMixin } from '@api-components/amf-helper-mixin/amf-helper-mixin.js';
@@ -55,7 +55,7 @@ class ApiDemo extends ApiDemoPageBase {
       this.doc = encode;
     } else {
       const key = helper._getAmfKey(helper.ns.schema.doc);
-      let docs = helper._ensureArray(encode[key]);
+      const docs = helper._ensureArray(encode[key]);
       this.doc = docs.find((item) => item['@id'] === id);
     }
     this.hasData = true;
@@ -69,18 +69,15 @@ class ApiDemo extends ApiDemoPageBase {
     <paper-item data-src="demo-document-compact.json">Documentation fragment - compact version</paper-item>`;
   }
 
-  render() {
+  contentTemplate() {
     const { amf, doc } = this;
-    render(html `
-    ${this.headerTemplate()}
+    return html`
+    <demo-element id="helper" .amf="${this.amf}"></demo-element>
     <raml-aware .api="${this.amf}" scope="model"></raml-aware>
-    <section role="main" class="centered card">
-      ${this._apiNavigationTemplate()}
       ${this.hasData ?
         html`<api-documentation-document .amf="${amf}" .shape="${doc}"></api-documentation-document>` :
         html`<p>Select a Documentation in the navigation to see the demo.</p>`}
-    </section>
-    <demo-element id="helper" .amf="${this.amf}"></demo-element>`, document.querySelector('#demo'));
+    `;
   }
 }
 const instance = new ApiDemo();

@@ -89,7 +89,7 @@
 ],
 "schema-org:description": [
 {
-"@value": "# This is an example API spec\nThe API doesn't exists in the real world therefore calls made to any endpoint will always fail.\nIf you'd like to perform actual request and see the response try GitHub API (which doesn't require user authentication in some endpoints) or other APIs.\nNote that you may need a Client ID or valid authorization token to perform a call to some APIs that are secured by the OAuth 2 protocol.\nThank you for testing the API console. Your feedback is welcome. Email us: arc@mulesoft.com\n"
+"@value": "# This is an example API spec\nThe API doesn't exists in the real world therefore calls made to any endpoint will always fail.\nIf you'd like to perform actual request and see the response try GitHub API (which doesn't require user authentication in some endpoints) or other APIs.\nNote that you may need a Client ID or valid authorization token to perform a call to some APIs that are secured by the OAuth 2 protocol.\n\nTest of links:\n-   [relative link](../demo-document/demo-document.raml)\n-   [absolute link](https://mulesoft.com)\n\nThank you for testing the API console. Your feedback is welcome. Email us: arc@mulesoft.com\n"
 }
 ],
 "sourcemaps:sources": [
@@ -107,7 +107,7 @@
 ],
 "sourcemaps:value": [
 {
-"@value": "[(8,4)-(14,0)]"
+"@value": "[(8,4)-(19,0)]"
 }
 ]
 },
@@ -119,7 +119,7 @@
 ],
 "sourcemaps:value": [
 {
-"@value": "[(7,4)-(14,0)]"
+"@value": "[(7,4)-(19,0)]"
 }
 ]
 },
@@ -247,7 +247,7 @@
 ],
 "sourcemaps:value": [
 {
-"@value": "[(16,4)-(25,0)]"
+"@value": "[(21,4)-(30,0)]"
 }
 ]
 },
@@ -259,7 +259,7 @@
 ],
 "sourcemaps:value": [
 {
-"@value": "[(15,4)-(25,0)]"
+"@value": "[(20,4)-(30,0)]"
 }
 ]
 },
@@ -271,7 +271,7 @@
 ],
 "sourcemaps:value": [
 {
-"@value": "[(15,4)-(16,0)]"
+"@value": "[(20,4)-(21,0)]"
 }
 ]
 }
@@ -309,7 +309,7 @@
 ],
 "sourcemaps:value": [
 {
-"@value": "[(6,0)-(25,0)]"
+"@value": "[(6,0)-(30,0)]"
 }
 ]
 },
@@ -333,7 +333,7 @@
 ],
 "sourcemaps:value": [
 {
-"@value": "[(2,0)-(25,0)]"
+"@value": "[(2,0)-(30,0)]"
 }
 ]
 },
