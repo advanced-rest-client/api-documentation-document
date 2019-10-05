@@ -1,7 +1,7 @@
 {
   "name": "@api-components/api-documentation-document",
   "description": "A component to render documentation node of the AMF model",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "license": "Apache-2.0",
   "main": "api-documentation-document.js",
   "keywords": [
