@@ -89,8 +89,8 @@ class ApiDocumentationDocument extends AmfHelperMixin(LitElement) {
    * @param {Object} shape Value of the `shape` attrribute
    */
   _shapeChanged(shape) {
-    this._title = this._getValue(shape, this.ns.schema.title);
-    this._content = this._getValue(shape, this.ns.schema.desc);
+    this._title = this._getValue(shape, this.ns.aml.vocabularies.core.title);
+    this._content = this._getValue(shape, this.ns.aml.vocabularies.core.description);
   }
   /**
    * At current state there's no way to tell where to navigate when relative

@@ -1,31 +1,34 @@
+import { AmfHelperMixin } from '@api-components/amf-helper-mixin/amf-helper-mixin.js';
+import { LitElement } from 'lit-element';
+
 export const AmfLoader = {};
-AmfLoader.load = async function(index, compact) {
+
+class HelperElement extends AmfHelperMixin(LitElement) {}
+window.customElements.define('helper-element', HelperElement);
+
+const helper = new HelperElement();
+
+AmfLoader.load = async function(compact) {
   const file = '/demo-api' + (compact ? '-compact' : '') + '.json';
   const url = location.protocol + '//' + location.host + '/base/demo/'+ file;
   return new Promise((resolve) => {
     const xhr = new XMLHttpRequest();
     xhr.addEventListener('load', (e) => {
-      let data = JSON.parse(e.target.response);
-      const original = data;
-      /* istanbul ignore else */
-      if (data instanceof Array) {
-        data = data[0];
-      }
-      const encKey = compact ? 'doc:encodes' : 'http://a.ml/vocabularies/document#encodes';
-      let encodes = data[encKey];
-      /* istanbul ignore else */
-      if (encodes instanceof Array) {
-        encodes = encodes[0];
-      }
-      const endKey = compact ? 'schema-org:documentation' : 'http://schema.org/documentation';
-      let docs = encodes[endKey];
-      /* istanbul ignore if */
-      if (!(docs instanceof Array)) {
-        docs = [docs];
-      }
-      resolve([original, docs[index]]);
+      const data = JSON.parse(e.target.response);
+      resolve(data);
     });
     xhr.open('GET', url);
     xhr.send();
   });
+};
+
+AmfLoader.lookupDocumentation = function(model, index) {
+  helper.amf = model;
+  const encodes = helper._computeEncodes(model);
+  const key = helper._getAmfKey(helper.ns.aml.vocabularies.core.documentation);
+  let docs = encodes[key];
+  if (!(docs instanceof Array)) {
+    docs = [docs];
+  }
+  return docs[index];
 };

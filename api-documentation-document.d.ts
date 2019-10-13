@@ -23,20 +23,11 @@ declare namespace ApiElements {
    *
    * A component to render documentation node of the AMF model
    *
-   * ## Styling
-   *
-   * `<api-documentation-document>` provides the following custom properties and mixins for styling:
-   *
-   * Custom property | Description | Default
-   * ----------------|-------------|----------
-   * `--arc-font-headline` | Mixin applied to header elmeent | `{}`
-   *
    * Markdown styles are defined in `advanced-rest-client/markdown-styles`.
    */
   class ApiDocumentationDocument extends
     AmfHelperMixin(
     Object) {
-    amf: any;
 
     /**
      * A Document to render.
@@ -62,6 +53,12 @@ declare namespace ApiElements {
      * @param shape Value of the `shape` attrribute
      */
     _shapeChanged(shape: object|null): void;
+
+    /**
+     * At current state there's no way to tell where to navigate when relative
+     * link is clicked. To prevent 404 anchores this prevents any relative link click.
+     */
+    _clickHandler(e: Event|null): void;
   }
 }
 

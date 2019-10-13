@@ -22,9 +22,8 @@ describe('<api-documentation-document>', function() {
         let docs;
 
         before(async () => {
-          const data = await AmfLoader.load(1, compact);
-          amf = data[0];
-          docs = data[1];
+          amf = await AmfLoader.load(compact);
+          docs = AmfLoader.lookupDocumentation(amf, 1);
         });
 
         beforeEach(async () => {
@@ -69,9 +68,8 @@ describe('<api-documentation-document>', function() {
         let anchors;
 
         before(async () => {
-          const data = await AmfLoader.load(0, compact);
-          amf = data[0];
-          docs = data[1];
+          amf = await AmfLoader.load(compact);
+          docs = AmfLoader.lookupDocumentation(amf, 0);
         });
 
         beforeEach(async () => {
