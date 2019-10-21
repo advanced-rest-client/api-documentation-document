@@ -15,7 +15,7 @@ import '@advanced-rest-client/arc-marked/arc-marked.js';
  * @appliesMixin AmfHelperMixin
  */
 class ApiDocumentationDocument extends AmfHelperMixin(LitElement) {
-  static get styles() {
+  get styles() {
     return [
       markdownStyles,
       css`:host {
@@ -39,7 +39,7 @@ class ApiDocumentationDocument extends AmfHelperMixin(LitElement) {
   render() {
     const { _title: title, _content: content } = this;
     const hasTitle = !!title;
-    return html`
+    return html`<style>${this.styles}</style>
     <div id="preview">
       ${hasTitle ? html`<h1>${title}</h1>` : undefined}
       <arc-marked .markdown="${content}" sanitize @click="${this._clickHandler}">
