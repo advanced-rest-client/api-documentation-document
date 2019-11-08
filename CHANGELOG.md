@@ -97,3 +97,12 @@
 
 
 
+## 4.0.1 (2019-11-08)
+
+
+### Bug Fixes
+
+* fixes APIC-268 - clicking on relative links ([004d506](https://github.com/advanced-rest-client/api-documentation-document/commit/004d506fe881c56c041734d61102385e311ad7fb))
+
+
+
