@@ -1,23 +1,30 @@
 import { fixture, assert, html } from '@open-wc/testing';
-import { AmfLoader } from './amf-loader.js';
-import * as sinon from 'sinon/pkg/sinon-esm.js';
+import sinon from 'sinon';
 import * as MockInteractions from '@polymer/iron-test-helpers/mock-interactions.js';
+import { AmfLoader } from './amf-loader.js';
 import '../api-documentation-document.js';
 
-describe('<api-documentation-document>', function() {
+/** @typedef {import('../').ApiDocumentationDocumentElement} ApiDocumentationDocumentElement */
+
+describe('<api-documentation-document>', () => {
+  /**
+   * @param {any} amf
+   * @param {any} shape
+   * @returns {Promise<ApiDocumentationDocumentElement>}
+   */
   async function basicFixture(amf, shape) {
-    return (await fixture(html`<api-documentation-document
+    return fixture(html`<api-documentation-document
       .amf="${amf}"
-      .shape="${shape}"></api-documentation-document>`));
+      .shape="${shape}"></api-documentation-document>`);
   }
 
   [
     ['Full AMF model', false],
     ['Compact AMF model', true]
   ].forEach(([label, compact]) => {
-    describe(label, () => {
+    describe(String(label), () => {
       describe('Basics', () => {
-        let element;
+        let element = /** @type ApiDocumentationDocumentElement */ (null);
         let amf;
         let docs;
 
@@ -54,7 +61,7 @@ describe('<api-documentation-document>', function() {
           assert.isFalse(spy.called);
         });
 
-        it('Does not call _shapeChanged() when setting the same sape value', () => {
+        it('Does not call _shapeChanged() when setting the same shape value', () => {
           const spy = sinon.spy(element, '_shapeChanged');
           element.shape = docs;
           assert.isFalse(spy.called);
@@ -62,7 +69,7 @@ describe('<api-documentation-document>', function() {
       });
 
       describe('Navigation', () => {
-        let element;
+        let element = /** @type ApiDocumentationDocumentElement */ (null);
         let amf;
         let docs;
         let anchors;
