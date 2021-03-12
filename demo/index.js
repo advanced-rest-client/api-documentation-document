@@ -1,39 +1,18 @@
 import { html } from 'lit-html';
-import { LitElement } from 'lit-element';
-import { ApiDemoPageBase } from '@advanced-rest-client/arc-demo-helper/ApiDemoPage.js';
-import { AmfHelperMixin } from '@api-components/amf-helper-mixin/amf-helper-mixin.js';
-import '@api-components/raml-aware/raml-aware.js';
-import '@api-components/api-navigation/api-navigation.js';
+import { ApiDemoPage } from '@advanced-rest-client/arc-demo-helper';
+import '@anypoint-web-components/anypoint-styles/colors.js';
+import '@anypoint-web-components/anypoint-item/anypoint-item.js';
 import '../api-documentation-document.js';
 
-class DemoElement extends AmfHelperMixin(LitElement) {}
-window.customElements.define('demo-element', DemoElement);
-
-class ApiDemo extends ApiDemoPageBase {
+class ApiDemo extends ApiDemoPage {
   constructor() {
     super();
+    this.initObservableProperties([
+      'doc'
+    ]);
     this.docsOpened = true;
     this.endpointsOpened = false;
-  }
-
-  get hasData() {
-    return this._hasData;
-  }
-
-  set hasData(value) {
-    this._setObservableProperty('hasData', value);
-  }
-
-  get doc() {
-    return this._doc;
-  }
-
-  set doc(value) {
-    this._setObservableProperty('doc', value);
-  }
-
-  get helper() {
-    return document.getElementById('helper');
+    
   }
 
   _navChanged(e) {
@@ -47,33 +26,32 @@ class ApiDemo extends ApiDemoPageBase {
   }
 
   setData(id) {
-    const helper = this.helper;
-    const encodes = helper._computeEncodes(this.amf);
-    const encode = encodes instanceof Array ? encodes[0] : encodes;
+    const encodes = this._computeEncodes(this.amf);
+    const encode = Array.isArray(encodes) ? encodes[0] : encodes;
     if (encode['@id'] === id) {
       // For Documentation fragment
       this.doc = encode;
     } else {
-      const key = helper._getAmfKey(helper.ns.schema.doc);
-      const docs = helper._ensureArray(encode[key]);
+      const key = this._getAmfKey(this.ns.schema.doc);
+      const docs = this._ensureArray(encode[key]);
       this.doc = docs.find((item) => item['@id'] === id);
     }
     this.hasData = true;
   }
 
   _apiListTemplate() {
-    return html`
-    <paper-item data-src="demo-api.json">Demo api</paper-item>
-    <paper-item data-src="demo-api-compact.json">Demo api - compact version</paper-item>
-    <paper-item data-src="demo-document.json">Documentation fragment</paper-item>
-    <paper-item data-src="demo-document-compact.json">Documentation fragment - compact version</paper-item>`;
+    return [
+      ['demo-api', 'Demo API'],
+      ['demo-document', 'Document fragment'],
+    ].map(([file, label]) => html`
+      <anypoint-item data-src="${file}-compact.json">${label} - compact model</anypoint-item>
+      <anypoint-item data-src="${file}.json">${label}</anypoint-item>
+    `);
   }
 
   contentTemplate() {
     const { amf, doc } = this;
     return html`
-    <demo-element id="helper" .amf="${this.amf}"></demo-element>
-    <raml-aware .api="${this.amf}" scope="model"></raml-aware>
       ${this.hasData ?
         html`<api-documentation-document .amf="${amf}" .shape="${doc}"></api-documentation-document>` :
         html`<p>Select a Documentation in the navigation to see the demo.</p>`}
