@@ -1,13 +1,10 @@
-[![Published on NPM](https://img.shields.io/npm/v/@api-components/api-documentation-document.svg)](https://www.npmjs.com/package/@api-components/api-documentation-document)
+# DEPRECATED
 
-[![Build Status](https://travis-ci.org/advanced-rest-client/api-documentation-document.svg?branch=stage)](https://travis-ci.org/advanced-rest-client/api-documentation-document)
+This component is being deprecated. The code base has been moved to [api-documentation](https://github.com/advanced-rest-client/api-documentation) module. This module will be archived when [PR 37](https://github.com/advanced-rest-client/api-documentation/pull/37) is merged.
 
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/advanced-rest-client/api-documentation-document)
-
-# api-documentation-document
+-----
 
 A component to render documentation node of the AMF model
-
 
 ```html
 <api-documentation-document amf="{...}" shape="{...}"></api-documentation-document>
@@ -21,7 +18,8 @@ For compatibility with previous model version use `3.x.x` version of the compone
 ## Usage
 
 ### Installation
-```
+
+```ssh
 npm install --save @api-components/api-documentation-document
 ```
 
@@ -71,6 +69,7 @@ npm start
 ```
 
 ### Running the tests
+
 ```sh
 npm test
 ```
